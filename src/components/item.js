@@ -1,12 +1,32 @@
 import React from 'react';
+import { Component } from 'react';
 
-export default class Titem extends React.Component{
+class Titem extends Component{
+
+    constructor(props){
+        super(props);
+        console.log(this.props)
+        this.state={
+            // itemarray:[],
+        }
+    }
+
     render() {
         return (
-        <li className="list-group-item text-capitalize 
-        d-flex justify-content-between my-2">
-            <h5>title</h5>
-        </li>
+            
+            <div>
+            {
+                this.props.datat.map((data,index)=>(
+                    <li className="list-group-item text-capitalize 
+                    d-flex justify-content-between my-2" key={index}>
+                    {data}
+                    </li>
+                ))
+            }
+            </div>
+        
+            
         )
     }
 }
+export default Titem;

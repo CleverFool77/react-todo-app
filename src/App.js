@@ -9,20 +9,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import uuid from 'uuid';
 
 class App extends Component {
-  state={
-    items:[],
-    id:0,
-    itemname:'',
-    edititem:false
-  };
-  handleChange= e => {
-    this.setState({
-      itemname:e.target.value
-    });
-  };
-  handleSubmit = (e) =>{
-
+  constructor(props){
+    super(props);
+    this.state={
+      itemarray:[],
+    };
+    this.transfer=this.transfer.bind(this);
   }
+
+  transfer(data){
+    this.setState({itemarray:data});
+    // console.log(this.state.itemarray);
+  }
+
+  
 
   render() {
     return (
@@ -30,9 +30,8 @@ class App extends Component {
         <div className="row">
           <div className="col-20 mx-auto">
             <h3 className="text-capitalize text-center">todo input</h3>
-            <Todo itemname={this.state.itemname} handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}/>
-            <Tlist />
+            <Todo functransfer={this.transfer}/>
+            <Tlist datat={this.state.itemarray}/>
           </div>
         </div>
       </div>
